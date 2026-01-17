@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.lang.reflect.Type;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -30,5 +31,6 @@ public class Expense {
 
     private String Description;
 
+    private LocalDate date;
 
 }

@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -38,5 +39,13 @@ public class ExpenseController {
     @GetMapping("/{userId}/analytics")
     public ResponseEntity<List<CategorySum>> getAnalytics(@PathVariable Integer userId){
         return ResponseEntity.ok(expenseService.getCategoryAnalytics(userId));
+    }
+
+    @GetMapping("/{userId}/analytics/date")
+    public ResponseEntity<List<CategorySum>> getAnalyticsByDate(@PathVariable Integer userId,
+      @RequestParam(required = false) LocalDate startDate,@RequestParam(required = false) LocalDate endDate){
+        LocalDate start = (startDate != null) ? startDate : LocalDate.now().withDayOfMonth(1); // Default: 1st of this month
+    LocalDate end = (endDate != null) ? endDate : LocalDate.now(); // Default: Today){
+        return ResponseEntity.ok(expenseService.getAnalyticsByDate(userId,start,end));
     }
 }
