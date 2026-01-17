@@ -1,5 +1,6 @@
 package com.shlok.SmartSpend.service;
 
+import com.shlok.SmartSpend.dto.CategorySum;
 import com.shlok.SmartSpend.model.Expense;
 import com.shlok.SmartSpend.model.User;
 import com.shlok.SmartSpend.repository.ExpenseRepository;
@@ -9,6 +10,7 @@ import org.springframework.boot.webmvc.autoconfigure.WebMvcProperties;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -28,6 +30,8 @@ public class UserService {
        return expenseRepository.save(expense);
 
    }
+
+
 
    public BigDecimal getTotalSpentByUser(Integer userId){
        BigDecimal total=expenseRepository.getTotalSpentByUser(userId);
