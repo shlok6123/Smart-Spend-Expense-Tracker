@@ -6,7 +6,7 @@ import com.shlok.SmartSpend.model.User;
 import com.shlok.SmartSpend.repository.ExpenseRepository;
 import com.shlok.SmartSpend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.webmvc.autoconfigure.WebMvcProperties;
+
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
