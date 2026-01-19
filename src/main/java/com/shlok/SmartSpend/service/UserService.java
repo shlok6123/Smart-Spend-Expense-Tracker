@@ -1,6 +1,7 @@
 package com.shlok.SmartSpend.service;
 
 import com.shlok.SmartSpend.dto.CategorySum;
+import com.shlok.SmartSpend.dto.UserDto;
 import com.shlok.SmartSpend.model.Expense;
 import com.shlok.SmartSpend.model.User;
 import com.shlok.SmartSpend.repository.ExpenseRepository;
@@ -31,6 +32,13 @@ public class UserService {
 
    }
 
+   public User createUser(UserDto userDto){
+           User newUser=new User();
+           newUser.setEmail(userDto.getEmail());
+           newUser.setUsername(userDto.getName());
+
+           return userRepository.save(newUser);
+   }
 
 
    public BigDecimal getTotalSpentByUser(Integer userId){

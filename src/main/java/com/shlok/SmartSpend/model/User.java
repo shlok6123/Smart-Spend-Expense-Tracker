@@ -1,5 +1,6 @@
 package com.shlok.SmartSpend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,5 +19,6 @@ public class User {
 
     private String email;
 
+    @JsonIgnore
     private String password;
 }
