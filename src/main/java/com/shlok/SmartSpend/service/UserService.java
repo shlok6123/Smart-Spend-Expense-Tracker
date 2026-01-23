@@ -22,15 +22,6 @@ public class UserService {
     @Autowired
     private ExpenseRepository expenseRepository;
 
-   public Expense createExpense(Expense expense,Integer userId){
-
-       User user=userRepository.findById(userId).orElseThrow(()->new RuntimeException("User Not Found with id "+userId));
-
-       expense.setUser(user);
-
-       return expenseRepository.save(expense);
-
-   }
 
    public User createUser(UserDto userDto){
            User newUser=new User();
@@ -43,7 +34,8 @@ public class UserService {
 
    public BigDecimal getTotalSpentByUser(Integer userId){
        BigDecimal total=expenseRepository.getTotalSpentByUser(userId);
-
        return (total!=null)?total:BigDecimal.ZERO;
    }
+
+
 }

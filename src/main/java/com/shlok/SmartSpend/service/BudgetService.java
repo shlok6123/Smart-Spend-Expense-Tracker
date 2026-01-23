@@ -18,12 +18,11 @@ public class BudgetService {
     private UserRepository userRepository;
     public Budget createOrUpdateBudget(Integer userId, BudgetDto budgetDto){
          User user= userRepository.findById(userId).orElseThrow(()->new RuntimeException("User Not Found"));
-
          Budget budget=budgetRepository.findByUserIdAndCategory(userId,budgetDto.getCategory()).orElse(new Budget());
-
          budget.setUser(user);
          budget.setLimitAmount(budgetDto.getLimitAmount());
          budget.setCategory(budgetDto.getCategory());
-         return budget;
+
+         return budgetRepository.save(budget);
     }
 }

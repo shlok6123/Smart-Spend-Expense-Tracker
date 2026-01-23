@@ -18,6 +18,9 @@ public interface ExpenseRepository extends JpaRepository<Expense,Integer> {
     @Query("Select SUM(e.amount) from Expense e where e.user.id=:userId")
     public BigDecimal getTotalSpentByUser(@Param("userId")Integer userId);
 
+    // New specialized method for Budget Checking
+    @Query("SELECT SUM(e.amount) FROM Expense e WHERE e.user.id = :userId AND e.category = :category")
+    BigDecimal getTotalSpentByCategory(@Param("userId") Integer userId, @Param("category") String category);
 
     // Inside ExpenseRepository interface
 
